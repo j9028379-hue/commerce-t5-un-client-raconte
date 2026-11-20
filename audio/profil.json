@@ -1,0 +1,72 @@
+{
+  "id": "temoignage_afrobeats",
+  "version": "1.0.0",
+  "pistes_approuvees": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "selection_musicale_validee": true,
+  "voix_complete_validee": true,
+  "rotation_active": true,
+  "pistes": [
+    {
+      "titre": "The Afrobeat",
+      "auteur": "FASSounds",
+      "id_pixabay": 153058,
+      "numero": 1,
+      "source": "https://pixabay.com/music/afrobeat-the-afrobeat-153058/",
+      "licence": "Pixabay Content License",
+      "redistribution_mp3": false,
+      "fichier": null,
+      "sha256": null,
+      "entree_musique_s": 0
+    },
+    {
+      "titre": "Afrobeat Afro Beat",
+      "auteur": "ARPMedia",
+      "id_pixabay": 569473,
+      "numero": 2,
+      "source": "https://pixabay.com/music/afrobeat-afrobeat-afro-beat-569473/",
+      "licence": "Pixabay Content License",
+      "redistribution_mp3": false,
+      "fichier": null,
+      "sha256": null,
+      "entree_musique_s": 0
+    },
+    {
+      "titre": "Ifunanya",
+      "auteur": "RoyaltyFreeBeats",
+      "id_pixabay": 303023,
+      "numero": 3,
+      "source": "https://pixabay.com/music/afrobeat-afrobeat-gitaar-beat-energieke-highlife-afropop-type-beat-ifunanya-303023/",
+      "licence": "Pixabay Content License",
+      "redistribution_mp3": false,
+      "fichier": null,
+      "sha256": null,
+      "entree_musique_s": 0
+    },
+    {
+      "titre": "Afrobeat Pop",
+      "auteur": "NverAvetyanMusic",
+      "id_pixabay": 151755,
+      "numero": 4,
+      "source": "https://pixabay.com/music/afrobeat-afrobeat-pop-151755/",
+      "licence": "Pixabay Content License",
+      "redistribution_mp3": false,
+      "fichier": null,
+      "sha256": "690b333f6f4ff353e07e89467cd9c59e2c0d6d8284e4466e3b7e009940866326",
+      "entree_musique_s": 0.38
+    }
+  ],
+  "mix": {
+    "lufs": -16,
+    "fond_db": -3,
+    "sous_parole_db": -10,
+    "attaque_ms": 120,
+    "relachement_ms": 450,
+    "ecart_min_db": 8
+  },
+  "voix_demo": "render/demo/voix/T5-Voix-seule.wav"
+}

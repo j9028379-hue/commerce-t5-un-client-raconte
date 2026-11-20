@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "required": [
+    "template_id",
+    "version",
+    "fps",
+    "images",
+    "dimensions",
+    "audio",
+    "scenes",
+    "effets",
+    "texte",
+    "audio_profile"
+  ],
+  "properties": {
+    "template_id": {
+      "const": "COMMERCE-T5"
+    },
+    "version": {
+      "const": "1.0.0"
+    },
+    "audio_profile": {
+      "const": "temoignage_afrobeats"
+    },
+    "fps": {
+      "const": 30
+    },
+    "images": {
+      "const": 900
+    },
+    "dimensions": {
+      "const": [
+        720,
+        1280
+      ]
+    },
+    "scenes": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "texte": {
+      "type": "object",
+      "required": [
+        "fenetres",
+        "fonte",
+        "graisse",
+        "entree_images",
+        "sortie_images",
+        "sha256"
+      ]
+    }
+  }
+}

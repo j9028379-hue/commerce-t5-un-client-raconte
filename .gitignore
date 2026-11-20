@@ -2,3 +2,6 @@ work/
 livraison/
 __pycache__/
 node_modules/
+verification/
+paquet/
+*.mp3

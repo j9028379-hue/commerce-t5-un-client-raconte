@@ -1,0 +1,131 @@
+[
+  {
+    "debut": 0,
+    "fin": 90,
+    "y": 566,
+    "lignes": [
+      "{nom}"
+    ],
+    "affiche": [
+      "Grâce Boutique"
+    ],
+    "bounds": [
+      191,
+      566,
+      530,
+      614
+    ]
+  },
+  {
+    "debut": 90,
+    "fin": 180,
+    "y": 566,
+    "lignes": [
+      "{produit}"
+    ],
+    "affiche": [
+      "Lanterne LED"
+    ],
+    "bounds": [
+      224,
+      566,
+      499,
+      599
+    ]
+  },
+  {
+    "debut": 180,
+    "fin": 420,
+    "y": 970,
+    "lignes": [
+      "« {avis_client} »",
+      "— {client}"
+    ],
+    "affiche": [
+      "« J’aime ses couleurs. Je",
+      "peux la porter partout. »",
+      "— Une cliente"
+    ],
+    "bounds": [
+      92,
+      970,
+      629,
+      1104
+    ]
+  },
+  {
+    "debut": 420,
+    "fin": 513,
+    "y": 560,
+    "lignes": [
+      "Le geste en détail"
+    ],
+    "affiche": [
+      "Le geste en détail"
+    ],
+    "bounds": [
+      172,
+      560,
+      549,
+      609
+    ]
+  },
+  {
+    "debut": 513,
+    "fin": 630,
+    "y": 965,
+    "lignes": [
+      "{produit}"
+    ],
+    "affiche": [
+      "Lanterne LED"
+    ],
+    "bounds": [
+      224,
+      965,
+      499,
+      998
+    ]
+  },
+  {
+    "debut": 630,
+    "fin": 748,
+    "y": 960,
+    "lignes": [
+      "« {avis_client} »",
+      "— {client}"
+    ],
+    "affiche": [
+      "« J’aime ses couleurs. Je",
+      "peux la porter partout. »",
+      "— Une cliente"
+    ],
+    "bounds": [
+      92,
+      960,
+      629,
+      1094
+    ]
+  },
+  {
+    "debut": 748,
+    "fin": 900,
+    "y": 935,
+    "lignes": [
+      "{nom}",
+      "{quartier}",
+      "WhatsApp : {whatsapp}"
+    ],
+    "affiche": [
+      "Grâce Boutique",
+      "Kandi, près du marché central",
+      "WhatsApp : +229 01 XX XX XX XX"
+    ],
+    "bounds": [
+      99,
+      935,
+      620,
+      1063
+    ]
+  }
+]

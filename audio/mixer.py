@@ -156,6 +156,14 @@ def marchand(master, clips, scenes, profile, music, credit, target, narration=No
                 - cfg["ecart_min_db"],
             )
         )
+    par_scene = {}
+    for sc in scenes:
+        sl = slice(sc['debut']*R//30, sc['fin']*R//30)
+        mask = sel[sl]
+        if np.any(mask):
+            ratio = float(10*np.log10(np.mean(v[sl][mask]**2)/max(1e-12,np.mean(m[sl][mask]**2))))
+            par_scene[sc['id']]=round(ratio,3)
+            if ratio < 4: raise ValueError('Parole masquée, scène '+sc['id'])
     x = v + m
     x *= db(cfg["lufs"] - level(x)[0])
     x = np.clip(x, -db(-2.6), db(-2.6))
@@ -198,8 +206,8 @@ def marchand(master, clips, scenes, profile, music, credit, target, narration=No
     assert (
         vh(master) == vh(target)
         and abs(len(a) / R - 30) < 0.04
-        and abs(li - cfg["lufs"]) < 1
-        and tp < -0.8
+        and abs(li - cfg["lufs"]) <= 0.5
+        and tp <= -1
     ), (li, tp)
     gap = (
         float(10 * np.log10(np.mean(v[sel] ** 2) / max(1e-12, np.mean(m[sel] ** 2))))
@@ -208,7 +216,7 @@ def marchand(master, clips, scenes, profile, music, credit, target, narration=No
     )
     assert gap is None or gap >= cfg["ecart_min_db"] - 0.01
     return dict(
-        scenes_audio=audibles,
+        scenes_audio=audibles, ecart_par_scene_db=par_scene,
         lufs=li,
         true_peak_dbtp=tp,
         voix_sur_musique_db=gap,

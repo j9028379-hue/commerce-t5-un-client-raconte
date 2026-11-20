@@ -1,0 +1,171 @@
+{
+  "type": "object",
+  "properties": {
+    "template_id": {
+      "const": "COMMERCE-T5"
+    },
+    "version": {
+      "const": "1.0.0"
+    },
+    "reponses": {
+      "type": "object",
+      "properties": {
+        "nom": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "produit": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "avis_client": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "client": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "quartier": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "whatsapp": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        }
+      },
+      "required": [
+        "nom",
+        "produit",
+        "avis_client",
+        "client",
+        "quartier",
+        "whatsapp"
+      ],
+      "additionalProperties": false
+    },
+    "ecrans": {
+      "const": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "captures": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        {
+          "type": "object",
+          "properties": {
+            "scene": {
+              "const": "S1"
+            },
+            "fichier": {
+              "const": "S1.video"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "scene",
+            "fichier",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "scene": {
+              "const": "S2"
+            },
+            "fichier": {
+              "const": "S2.video"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "scene",
+            "fichier",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "scene": {
+              "const": "S3"
+            },
+            "fichier": {
+              "const": "S3.video"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "scene",
+            "fichier",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "scene": {
+              "const": "S4"
+            },
+            "fichier": {
+              "const": "S4.video"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "scene",
+            "fichier",
+            "sha256"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "items": false
+    }
+  },
+  "required": [
+    "template_id",
+    "version",
+    "reponses",
+    "ecrans",
+    "captures"
+  ],
+  "additionalProperties": false
+}

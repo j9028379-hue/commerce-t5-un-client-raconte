@@ -3,12 +3,17 @@
     {
       "template_id": "COMMERCE-T5",
       "titre": "Un client raconte",
-      "statut": "Épreuve silencieuse 01",
+      "statut": "Référence technique ; activation musicale conditionnée aux médias authentifiés",
       "questions": "form/questions.json",
       "cartes": "capture-guide/ecrans.json",
       "partition": "montage/partition.json",
       "references": "references/choix.json",
-      "version": "0.1.0"
+      "version": "1.0.0",
+      "audio": "audio/profil.json",
+      "audio_profile": "temoignage_afrobeats",
+      "schema_job": "schemas/render-job.json",
+      "validation": "approvals/validation.json",
+      "ota_implemented": false
     }
   ]
 }

@@ -1,23 +1,110 @@
-name: T5 · Voix validée et Afrobeat Pop
-on: workflow_dispatch
+name: T5 · Contrôle de référence et livraison tournante
+on:
+  workflow_dispatch:
+    inputs:
+      livrer:
+        type: boolean
+        description: Livraison réelle (quatre pistes originales requises)
+        default: false
+concurrency:
+  group: commerce-t5-${{ github.ref }}
+  cancel-in-progress: false
 permissions: {contents: read}
 jobs:
-  mixer:
+  rendre:
+    permissions: {contents: read}
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with: {persist-credentials: false}
-      - name: Charger le master validé et le morceau exact, hors artefact
-        env: {GH_TOKEN: '${{ github.token }}'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Contrat JSON et quatre rushs réels vérifiés
         run: |
-          mkdir -p work
+          command -v ffmpeg && command -v ffprobe || { sudo apt-get update -qq && sudo apt-get install -y ffmpeg; }
+          pip install numpy opencv-python-headless pillow jsonschema
+          npm install --prefix "$RUNNER_TEMP/tools" --ignore-scripts --no-audit puppeteer-core@23.11.1
+          python tools/site.py && git diff --exit-code docs/data.js
+          python render/demo/preparer.py
+      - name: Parcourir les 12 écrans et exporter les prises avec le job
+        run: NODE_PATH="$RUNNER_TEMP/tools/node_modules" node render/parcours.cjs
+      - name: Médias éphémères et état réel (lecture seule)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXIGER_QUATRE: ${{ inputs.livrer }}
+          T5_URL_1: ${{ github.ref == 'refs/heads/main' && secrets.T5_URL_1 || '' }}
+          T5_SHA_1: ${{ github.ref == 'refs/heads/main' && secrets.T5_SHA_1 || '' }}
+          T5_URL_2: ${{ github.ref == 'refs/heads/main' && secrets.T5_URL_2 || '' }}
+          T5_SHA_2: ${{ github.ref == 'refs/heads/main' && secrets.T5_SHA_2 || '' }}
+          T5_URL_3: ${{ github.ref == 'refs/heads/main' && secrets.T5_URL_3 || '' }}
+          T5_SHA_3: ${{ github.ref == 'refs/heads/main' && secrets.T5_SHA_3 || '' }}
+        run: |
+          python integration/medias.py
+          python integration/etat.py lire
+          if [ "${{ inputs.livrer }}" = true ]; then python audio/rotation.py import work/rotation.sqlite work/etat.json; fi
+          python -c "import json; j=lambda p:json.load(open(p)); assert j('work/job/job.json')==j('golden/job.json')"
+      - name: Rendu, fidélité visuelle et audit AAC du film livré
+        env: {GH_TOKEN: "${{ github.token }}", OPENBLAS_NUM_THREADS: 1}
+        run: |
+          python render/marchand.py --job work/job --out verification/livres --state work/rotation.sqlite --demo --delivery "$GITHUB_RUN_ID"
+          mkdir -p livraison && cp -r verification/livres/*/* livraison/
           gh release download essai-silencieux-01 -p 'T5-Un-client-raconte-01.mp4' -O work/master.mp4
-          curl -fLsS --max-time 45 --retry 1 'https://archive.org/download/royalty-free-music/Afrobeat%20Pop.mp3' -o work/piste.mp3
-      - name: Mixer la narration, contrôler l’image et mesurer le résultat AAC
+          cmp <(ffmpeg -v error -i work/master.mp4 -map 0:v -f hash -hash sha256 -) <(ffmpeg -v error -i livraison/Film.mp4 -map 0:v -f hash -hash sha256 -)
+          gh release download temoin-sonore-01 -p '*.mp4' -O work/livre.mp4
+          python qc/balance.py work/livre.mp4 work/musique-4.mp3 | tee livraison/balance.json
+          python -c "import json; j=lambda p:json.load(open(p)); assert j('livraison/preuve.json')['fenetres']==j('golden/titres.json')"
+          python audio/rotation.py export work/rotation.sqlite work/suivant.json
+      - name: Autre marchand, contrat et paquet vérifié, Cloudflare à blanc
         run: |
-          command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y ffmpeg; }
-          python -m pip install numpy
-          python audio/rendu_demo.py
+          python qc/contre_epreuve.py preparer
+          NODE_PATH="$RUNNER_TEMP/tools/node_modules" T5_REPONSES=qc/marchand-test.json node render/parcours.cjs
+          python qc/contre_epreuve.py verifier
+          python package/livrer.py build paquet/COMMERCE-T5-1.0.0.zip
+          python qc/architecture.py paquet/COMMERCE-T5-1.0.0.zip
+          node shared/cloudflare-control-plane/test.mjs
+          (cd shared/cloudflare-control-plane && npx --yes wrangler@4.45.0 deploy --dry-run --outdir "$RUNNER_TEMP/worker")
       - uses: actions/upload-artifact@v4
-        with: {name: T5-sonore, path: livraison/, if-no-files-found: error}
+        with:
+          name: T5-sonore
+          path: |
+            livraison/Film.mp4
+            livraison/balance.json
+            livraison/audio.json
+            livraison/preuve.json
+            livraison/RenderResult.json
+            livraison/CREDITS.txt
+            livraison/Planche.jpg
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with: {name: T5-paquet, path: paquet/*.zip, if-no-files-found: error}
+      - name: Contrôles de parité et simulation de confirmation sans écriture
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          cp livraison/RenderResult.json work/RenderResult.json
+          python qc/parite_securite.py
+          if [ "${{ inputs.livrer }}" = true ]; then python integration/etat.py verifier; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: recu-rotation
+          path: |
+            work/etag
+            work/suivant.json
+            work/RenderResult.json
+          if-no-files-found: error
+  confirmer:
+    if: inputs.livrer && github.ref == 'refs/heads/main'
+    needs: rendre
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    permissions: {contents: write}
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false, sparse-checkout: integration, ref: "${{ github.sha }}"}
+      - uses: actions/download-artifact@v4
+        with: {name: recu-rotation, path: work}
+      - name: Confirmer après contrôles et dépôt des artefacts
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: python integration/etat.py confirmer

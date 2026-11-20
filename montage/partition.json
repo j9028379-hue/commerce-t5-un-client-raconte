@@ -48,7 +48,7 @@
     "A",
     "C"
   ],
-  "version": "0.1.0",
+  "version": "1.0.0",
   "fps": 30,
   "images": 900,
   "dimensions": [
@@ -191,5 +191,6 @@
       }
     ],
     "zones": "Centrage horizontal et fondu de A ; zone basse pour le témoignage et le contact, hors du filament très clair."
-  }
+  },
+  "audio_profile": "temoignage_afrobeats"
 }
