@@ -148,7 +148,7 @@
       {
         "debut": 180,
         "fin": 420,
-        "y": 570,
+        "y": 970,
         "lignes": [
           "« {avis_client} »",
           "— {client}"
@@ -165,29 +165,31 @@
       {
         "debut": 513,
         "fin": 630,
-        "y": 565,
+        "y": 965,
         "lignes": [
           "{produit}"
         ]
       },
       {
         "debut": 630,
-        "fin": 722,
-        "y": 550,
+        "fin": 748,
+        "y": 960,
         "lignes": [
-          "{client} raconte"
+          "« {avis_client} »",
+          "— {client}"
         ]
       },
       {
-        "debut": 722,
+        "debut": 748,
         "fin": 900,
-        "y": 530,
+        "y": 935,
         "lignes": [
           "{nom}",
           "{quartier}",
           "WhatsApp : {whatsapp}"
         ]
       }
-    ]
+    ],
+    "zones": "Centrage horizontal et fondu de A ; zone basse pour le témoignage et le contact, hors du filament très clair."
   }
 }
