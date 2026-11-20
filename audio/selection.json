@@ -1,0 +1,27 @@
+{
+  "selection_validee": true,
+  "mp3_recus": false,
+  "pistes": [
+    {
+      "titre": "The Afrobeat",
+      "auteur": "FASSounds",
+      "id_pixabay": 153058
+    },
+    {
+      "titre": "Afrobeat Afro Beat",
+      "auteur": "ARPMedia",
+      "id_pixabay": 569473
+    },
+    {
+      "titre": "Ifunanya",
+      "auteur": "RoyaltyFreeBeats",
+      "id_pixabay": 303023
+    },
+    {
+      "titre": "Afrobeat Pop",
+      "auteur": "NverAvetyanMusic",
+      "id_pixabay": 151755
+    }
+  ],
+  "distribution": "Fichiers musicaux privés, aucune redistribution autonome."
+}
