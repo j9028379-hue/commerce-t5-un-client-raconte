@@ -1,63 +1,68 @@
 {
   "id": "temoignage_afrobeats",
-  "version": "1.0.0",
-  "pistes_approuvees": [
-    1,
-    2,
-    3,
-    4
-  ],
-  "selection_musicale_validee": true,
+  "version": "1.1.0",
   "voix_complete_validee": true,
   "rotation_active": true,
   "pistes": [
     {
-      "titre": "The Afrobeat",
-      "auteur": "FASSounds",
-      "id_pixabay": 153058,
       "numero": 1,
-      "source": "https://pixabay.com/music/afrobeat-the-afrobeat-153058/",
-      "licence": "Pixabay Content License",
-      "redistribution_mp3": false,
-      "fichier": null,
-      "sha256": null,
-      "entree_musique_s": 0
+      "titre": "Combinations",
+      "auteur": "Joseph Sacco",
+      "source": "https://freemusicarchive.org/music/joseph-sacco/afrobeast-instrumentals/combinations/",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "sha256_source": "685fc04c83e8a3f26e1c4330b0c655e85a53af7abbe0a1761ccdefd5d9d0d119",
+      "extrait_debut_source_s": 21.7069,
+      "entree_musique_s": 0,
+      "redistribution_mp3": true,
+      "fichier": "audio/pistes/01-combinations.mp3",
+      "sha256": "156f7005a3ca34900021fb125482b6caef56446b2cde7718a966ad70f6af4715",
+      "credit": "Combinations — Joseph Sacco, https://freemusicarchive.org/music/joseph-sacco/afrobeast-instrumentals/combinations/ ; CC BY 4.0 https://creativecommons.org/licenses/by/4.0/ ; extrait à 21.707 s, recoupe et court fondu d’entrée. Pour le film : niveau ajusté, atténuation sous la parole et fondu final."
     },
     {
-      "titre": "Afrobeat Afro Beat",
-      "auteur": "ARPMedia",
-      "id_pixabay": 569473,
       "numero": 2,
-      "source": "https://pixabay.com/music/afrobeat-afrobeat-afro-beat-569473/",
-      "licence": "Pixabay Content License",
-      "redistribution_mp3": false,
-      "fichier": null,
-      "sha256": null,
-      "entree_musique_s": 0
+      "titre": "Fall Time",
+      "auteur": "Joseph Sacco",
+      "source": "https://freemusicarchive.org/music/joseph-sacco/afrobeast-instrumentals/fall-time/",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "sha256_source": "65d1197f97377d4eb50ab686b803718c224e301a2222d05e901f428ff69d7715",
+      "extrait_debut_source_s": 33.3,
+      "entree_musique_s": 0,
+      "redistribution_mp3": true,
+      "fichier": "audio/pistes/02-fall-time.mp3",
+      "sha256": "f87a33898f5992ec044d3b868c300cdc51e507a2ac84d517c013cb367f19b9cf",
+      "credit": "Fall Time — Joseph Sacco, https://freemusicarchive.org/music/joseph-sacco/afrobeast-instrumentals/fall-time/ ; CC BY 4.0 https://creativecommons.org/licenses/by/4.0/ ; extrait à 33.300 s, recoupe et court fondu d’entrée. Pour le film : niveau ajusté, atténuation sous la parole et fondu final."
     },
     {
-      "titre": "Ifunanya",
-      "auteur": "RoyaltyFreeBeats",
-      "id_pixabay": 303023,
       "numero": 3,
-      "source": "https://pixabay.com/music/afrobeat-afrobeat-gitaar-beat-energieke-highlife-afropop-type-beat-ifunanya-303023/",
-      "licence": "Pixabay Content License",
-      "redistribution_mp3": false,
-      "fichier": null,
-      "sha256": null,
-      "entree_musique_s": 0
+      "titre": "Manifestation",
+      "auteur": "Joseph Sacco",
+      "source": "https://freemusicarchive.org/music/joseph-sacco/afrobeast-instrumentals/manifestation/",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "sha256_source": "913a4a53e086baf18912b859ebc7cbc5c46c0f032ac258eb9b11eb42deed78b1",
+      "extrait_debut_source_s": 30.9009,
+      "entree_musique_s": 0,
+      "redistribution_mp3": true,
+      "fichier": "audio/pistes/03-manifestation.mp3",
+      "sha256": "4e56fa6de4daf8b6bf938272ba03ce9f2af5eaf750cacd6031e54d9a99fa7b72",
+      "credit": "Manifestation — Joseph Sacco, https://freemusicarchive.org/music/joseph-sacco/afrobeast-instrumentals/manifestation/ ; CC BY 4.0 https://creativecommons.org/licenses/by/4.0/ ; extrait à 30.901 s, recoupe et court fondu d’entrée. Pour le film : niveau ajusté, atténuation sous la parole et fondu final."
     },
     {
-      "titre": "Afrobeat Pop",
-      "auteur": "NverAvetyanMusic",
-      "id_pixabay": 151755,
       "numero": 4,
-      "source": "https://pixabay.com/music/afrobeat-afrobeat-pop-151755/",
-      "licence": "Pixabay Content License",
-      "redistribution_mp3": false,
-      "fichier": null,
-      "sha256": "690b333f6f4ff353e07e89467cd9c59e2c0d6d8284e4466e3b7e009940866326",
-      "entree_musique_s": 0.38
+      "titre": "Sun Hat",
+      "auteur": "Joseph Sacco",
+      "source": "https://freemusicarchive.org/music/joseph-sacco/afrobeast-instrumentals/sun-hat/",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "sha256_source": "ae713b11c0b3c1e385ad5c75b4f79432f2c95777826a6a6902046a34799c55dc",
+      "extrait_debut_source_s": 27.3003,
+      "entree_musique_s": 0,
+      "redistribution_mp3": true,
+      "fichier": "audio/pistes/04-sun-hat.mp3",
+      "sha256": "04069f790683601b087b66644fe84d55173e7c6037bf038e7d5c464f5482ca79",
+      "credit": "Sun Hat — Joseph Sacco, https://freemusicarchive.org/music/joseph-sacco/afrobeast-instrumentals/sun-hat/ ; CC BY 4.0 https://creativecommons.org/licenses/by/4.0/ ; extrait à 27.300 s, recoupe et court fondu d’entrée. Pour le film : niveau ajusté, atténuation sous la parole et fondu final."
     }
   ],
   "mix": {
@@ -68,5 +73,13 @@
     "relachement_ms": 450,
     "ecart_min_db": 8
   },
-  "voix_demo": "render/demo/voix/T5-Voix-seule.wav"
+  "voix_demo": "render/demo/voix/T5-Voix-seule.wav",
+  "selection_commerciale_autorisee": true,
+  "ecoute_individuelle_par_proprietaire": false,
+  "pistes_utilisables": [
+    1,
+    2,
+    3,
+    4
+  ]
 }

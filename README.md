@@ -1,9 +1,9 @@
-# COMMERCE-T5 · Un client raconte
+# T5 · Un client raconte
 
-Brief propriétaire : 6 questions, 12 écrans, 4 prises du même produit ou résultat de service, 30 secondes. [Catalogue](catalogue/catalogue.json) · [Questions](form/questions.json) · [Cartes exactes](capture-guide/ecrans.json) · [Champs du montage](montage/partition.json) · [Références à départager](references/choix.json).
+**Dépôt public officiel du gabarit Commerce T5.** Version commerciale 1.1.0. Le code et les versions publiées font référence ici ; les copies de visionnage sur Drive ne pilotent pas le moteur.
 
-Le témoignage provient de `avis_client`. Afficher `client` selon le choix de la personne ; prénom avec son accord. Les exemples du formulaire ne sont pas des avis réels. Références externes pour étudier le mouvement uniquement ; aucun de leurs médias n’est distribué. Choix propriétaire : A + C, typographie et fondu de A. La partition pilote la caméra/import, les quatre prises du job navigateur, les coupes et le titrage du rendu silencieux sur GitHub Actions. Pas de déploiement Cloudflare de production.
+[Parcours 6 questions → 12 écrans](https://j9028379-hue.github.io/commerce-t5-un-client-raconte/) · [Catalogue](catalogue/catalogue.json) · [Partition et police](montage/partition.json) · [Moteur de rendu](render/marchand.py) · [Worker de référence](shared/cloudflare-control-plane/) · [Rotation](audio/rotation.py) · [Musiques et crédits](audio/CREDITS.md) · [Source vidéo et attribution](render/demo/plans.json).
 
-Contrôle du brief : `python qc/brief.py`.
+Les quatre MP3 adaptés sont dans `audio/pistes/` et le ZIP ; les conserver sous CC BY 4.0 avec attribution. Les anciennes pistes Pixabay ne sont pas redistribuées. Le [film historique validé](https://github.com/j9028379-hue/commerce-t5-un-client-raconte/releases/tag/temoin-sonore-01) et le [master muet](https://github.com/j9028379-hue/commerce-t5-un-client-raconte/releases/tag/essai-silencieux-01) gardent leurs images et leurs sons d’origine. La démo utilise un témoignage fictif.
 
-Épreuve 01 : [source et crédits des rushs](render/demo/plans.json) · [police OFL](docs/assets/OFL.txt). Exemple fictif, aucun témoignage réel revendiqué.
+Déclencher `sonore.yml` pour les contrôles ; `livrer=true` pour confirmer une livraison sur main. Le rendu marchand local prend son job et ses quatre prises, sans narration de démonstration : `python render/marchand.py --job DOSSIER --out SORTIE --state journal.sqlite`. Le projet nécessite les outils décrits dans le workflow (FFmpeg, Python, Node).

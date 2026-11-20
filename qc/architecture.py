@@ -15,7 +15,7 @@ validate(s, J("schemas/template.json"))
 validate(J("golden/job.json"), J(e["schema_job"]))
 assert all(
     a[k]
-    for k in ("voix_complete_validee", "selection_musicale_validee", "rotation_active")
+    for k in ("voix_complete_validee", "selection_commerciale_autorisee", "rotation_active")
 )
 assert (
     len(J(e["cartes"])) == 12

@@ -14,7 +14,7 @@
       "const": "COMMERCE-T5"
     },
     "version": {
-      "const": "1.0.0"
+      "const": "1.1.0"
     },
     "schema_version": {
       "const": "1.0.0"

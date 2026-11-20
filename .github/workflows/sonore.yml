@@ -34,15 +34,7 @@ jobs:
       - name: Médias éphémères et état réel (lecture seule)
         env:
           GH_TOKEN: ${{ github.token }}
-          EXIGER_QUATRE: ${{ inputs.livrer }}
-          T5_URL_1: ${{ github.ref == 'refs/heads/main' && secrets.T5_URL_1 || '' }}
-          T5_SHA_1: ${{ github.ref == 'refs/heads/main' && secrets.T5_SHA_1 || '' }}
-          T5_URL_2: ${{ github.ref == 'refs/heads/main' && secrets.T5_URL_2 || '' }}
-          T5_SHA_2: ${{ github.ref == 'refs/heads/main' && secrets.T5_SHA_2 || '' }}
-          T5_URL_3: ${{ github.ref == 'refs/heads/main' && secrets.T5_URL_3 || '' }}
-          T5_SHA_3: ${{ github.ref == 'refs/heads/main' && secrets.T5_SHA_3 || '' }}
         run: |
-          python integration/medias.py
           python integration/etat.py lire
           if [ "${{ inputs.livrer }}" = true ]; then python audio/rotation.py import work/rotation.sqlite work/etat.json; fi
           python -c "import json; j=lambda p:json.load(open(p)); assert j('work/job/job.json')==j('golden/job.json')"
@@ -53,8 +45,7 @@ jobs:
           mkdir -p livraison && cp -r verification/livres/*/* livraison/
           gh release download essai-silencieux-01 -p 'T5-Un-client-raconte-01.mp4' -O work/master.mp4
           cmp <(ffmpeg -v error -i work/master.mp4 -map 0:v -f hash -hash sha256 -) <(ffmpeg -v error -i livraison/Film.mp4 -map 0:v -f hash -hash sha256 -)
-          gh release download temoin-sonore-01 -p '*.mp4' -O work/livre.mp4
-          python qc/balance.py work/livre.mp4 work/musique-4.mp3 | tee livraison/balance.json
+          python qc/quatre_mixes.py
           python -c "import json; j=lambda p:json.load(open(p)); assert j('livraison/preuve.json')['fenetres']==j('golden/titres.json')"
           python audio/rotation.py export work/rotation.sqlite work/suivant.json
       - name: Autre marchand, contrat et paquet vérifié, Cloudflare à blanc
@@ -62,8 +53,8 @@ jobs:
           python qc/contre_epreuve.py preparer
           NODE_PATH="$RUNNER_TEMP/tools/node_modules" T5_REPONSES=qc/marchand-test.json node render/parcours.cjs
           python qc/contre_epreuve.py verifier
-          python package/livrer.py build paquet/COMMERCE-T5-1.0.0.zip
-          python qc/architecture.py paquet/COMMERCE-T5-1.0.0.zip
+          python package/livrer.py build paquet/COMMERCE-T5-1.1.0.zip
+          python qc/architecture.py paquet/COMMERCE-T5-1.1.0.zip
           node shared/cloudflare-control-plane/test.mjs
           (cd shared/cloudflare-control-plane && npx --yes wrangler@4.45.0 deploy --dry-run --outdir "$RUNNER_TEMP/worker")
       - uses: actions/upload-artifact@v4
@@ -80,6 +71,8 @@ jobs:
           if-no-files-found: error
       - uses: actions/upload-artifact@v4
         with: {name: T5-paquet, path: paquet/*.zip, if-no-files-found: error}
+      - uses: actions/upload-artifact@v4
+        with: {name: T5-comparaison, path: verification/mix/, if-no-files-found: error}
       - name: Contrôles de parité et simulation de confirmation sans écriture
         env: {GH_TOKEN: "${{ github.token }}"}
         run: |

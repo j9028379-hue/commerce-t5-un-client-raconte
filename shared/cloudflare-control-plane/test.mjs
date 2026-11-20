@@ -1,4 +1,4 @@
 import assert from 'node:assert/strict';import w from './worker.mjs';const call=(p,m='GET')=>w.fetch(new Request('https://unit.invalid'+p,{method:m}));assert.equal((await (await call('/v1/catalogue')).json()).entries[0].template_id,'COMMERCE-T5');assert.equal((await (await call('/v1/health')).json()).ota_implemented,false);assert.equal((await call('/v1/catalogue','POST')).status,405);assert.equal((await call('/jobs')).status,404);console.log('PASS : catalogue, santé, lecture seule, route absente.');
 const e=(await (await call('/v1/catalogue')).json()).entries[0], data=await(await call(`/v1/templates/${e.template_id}/${e.version}`)).json();assert.equal(data.questions.length,6);assert.equal(data.ecrans.length,12);assert.equal(data.partition.audio_profile,e.audio_profile);assert.equal(data.partition.version,e.version);assert.equal((await call('/v1/templates/COMMERCE-T5/obsolete')).status,404);
 
-assert.equal(data.audio.id,e.audio_profile);assert.deepEqual(data.audio.pistes_approuvees,[1,2,3,4]);
+assert.equal(data.audio.id,e.audio_profile);assert.deepEqual(data.audio.pistes_utilisables,[1,2,3,4]);

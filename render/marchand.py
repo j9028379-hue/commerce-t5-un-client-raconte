@@ -1,4 +1,4 @@
-"""Rendu complet, en mode marchand par défaut. Cache audio privé facultatif, aucune diffusion de sources privées."""
+"""Rendu complet, en mode marchand par défaut. Quatre extraits CC BY embarqués et vérifiés."""
 
 import os, sys, hashlib, json, tempfile, subprocess as sp, argparse
 from pathlib import Path as P
@@ -18,13 +18,14 @@ def assets(a):
     out = {}
     for t in a["pistes"]:
         i = t["numero"]
-        path = os.getenv(f'T5_PRIVATE_{i:02}')
-        digest = t['sha256'] or os.getenv(f'T5_PRIVATE_{i:02}_SHA256')
+        path = t['fichier']
+        digest = t['sha256']
         if path:
             p=P(path)
             if not p.is_file() or not digest or H(p)!=digest: raise ValueError(f'Média {i} invalide')
             out[i]=(p,t)
     if len({H(p) for p,t in out.values()})!=len(out): raise ValueError('Source dupliquée')
+    if set(out)!={1,2,3,4}: raise ValueError('Catalogue commercial incomplet')
     return out
 
 
@@ -46,7 +47,7 @@ def run(src, dest, db, demo=False, delivery=""):
             H(p) == c["sha256"] for p, c in zip(clips, j["captures"])
         )
         a = J(e["audio"])
-        assert a["voix_complete_validee"] and a["selection_musicale_validee"]
+        assert a["voix_complete_validee"] and a["selection_commerciale_autorisee"]
         assert a["id"] == plan["audio_profile"] == e["audio_profile"]
         voice = None
         if demo:
