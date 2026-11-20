@@ -37,14 +37,14 @@ jobs:
         run: |
           python integration/etat.py lire
           if [ "${{ inputs.livrer }}" = true ]; then python audio/rotation.py import work/rotation.sqlite work/etat.json; fi
-          python -c "import json; j=lambda p:json.load(open(p)); assert j('work/job/job.json')==j('golden/job.json')"
+          python qc/job_reference.py
       - name: Rendu, fidélité visuelle et audit AAC du film livré
         env: {GH_TOKEN: "${{ github.token }}", OPENBLAS_NUM_THREADS: 1}
         run: |
           python render/marchand.py --job work/job --out verification/livres --state work/rotation.sqlite --demo --delivery "$GITHUB_RUN_ID"
           mkdir -p livraison && cp -r verification/livres/*/* livraison/
           gh release download essai-silencieux-01 -p 'T5-Un-client-raconte-01.mp4' -O work/master.mp4
-          cmp <(ffmpeg -v error -i work/master.mp4 -map 0:v -f hash -hash sha256 -) <(ffmpeg -v error -i livraison/Film.mp4 -map 0:v -f hash -hash sha256 -)
+          python qc/images_reference.py work/master.mp4 livraison/Film.mp4
           python qc/quatre_mixes.py
           python -c "import json; j=lambda p:json.load(open(p)); assert j('livraison/preuve.json')['fenetres']==j('golden/titres.json')"
           python audio/rotation.py export work/rotation.sqlite work/suivant.json
