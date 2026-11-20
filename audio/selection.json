@@ -1,6 +1,5 @@
 {
   "selection_validee": true,
-  "mp3_recus": false,
   "pistes": [
     {
       "titre": "The Afrobeat",
@@ -23,5 +22,9 @@
       "id_pixabay": 151755
     }
   ],
-  "distribution": "Fichiers musicaux privés, aucune redistribution autonome."
+  "distribution": "Fichiers musicaux privés, aucune redistribution autonome.",
+  "sources_verifiees": [
+    151755
+  ],
+  "voix_demo_validee": true
 }

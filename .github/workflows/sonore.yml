@@ -1,0 +1,23 @@
+name: T5 · Voix validée et Afrobeat Pop
+on: workflow_dispatch
+permissions: {contents: read}
+jobs:
+  mixer:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - name: Charger le master validé et le morceau exact, hors artefact
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: |
+          mkdir -p work
+          gh release download essai-silencieux-01 -p 'T5-Un-client-raconte-01.mp4' -O work/master.mp4
+          curl -fLsS --max-time 45 --retry 1 'https://archive.org/download/royalty-free-music/Afrobeat%20Pop.mp3' -o work/piste.mp3
+      - name: Mixer la narration, contrôler l’image et mesurer le résultat AAC
+        run: |
+          command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y ffmpeg; }
+          python -m pip install numpy
+          python audio/rendu_demo.py
+      - uses: actions/upload-artifact@v4
+        with: {name: T5-sonore, path: livraison/, if-no-files-found: error}
