@@ -1,0 +1,58 @@
+[
+  {
+    "numero": 1,
+    "cle": "nom",
+    "libelle": "Nom du commerce",
+    "question": "Comment s'appelle ton commerce ?",
+    "exemples": [
+      "Grâce Boutique"
+    ]
+  },
+  {
+    "numero": 2,
+    "cle": "produit",
+    "libelle": "Produit ou service",
+    "question": "Quel produit ou service le client a acheté ou utilisé ?",
+    "exemples": [
+      "Une paire de chaussures."
+    ]
+  },
+  {
+    "numero": 3,
+    "cle": "avis_client",
+    "libelle": "Paroles du client",
+    "question": "Qu'est-ce que le client a dit après avoir acheté ou utilisé ton produit ?",
+    "exemples": [
+      "« J'aime beaucoup ces chaussures. Elles sont belles et confortables. »"
+    ]
+  },
+  {
+    "numero": 4,
+    "cle": "client",
+    "libelle": "Nom du client",
+    "question": "Quel nom peut-on mettre pour parler du client dans la vidéo ?",
+    "exemples": [
+      "Un client",
+      "Une cliente",
+      "Grâce (avec son accord)"
+    ]
+  },
+  {
+    "numero": 5,
+    "cle": "quartier",
+    "libelle": "Lieu du commerce",
+    "question": "Où se trouve ton commerce ?",
+    "exemples": [
+      "Kandi, près du marché central."
+    ]
+  },
+  {
+    "numero": 6,
+    "cle": "whatsapp",
+    "libelle": "Numéro WhatsApp",
+    "question": "Quel est ton numéro WhatsApp pour que les clients puissent te contacter ?",
+    "exemples": [
+      "+229 01 97 00 00 00"
+    ]
+  }
+]

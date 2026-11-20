@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "template_id": "COMMERCE-T5",
+      "titre": "Un client raconte",
+      "statut": "Choix des transitions en attente",
+      "questions": "form/questions.json",
+      "cartes": "capture-guide/ecrans.json",
+      "partition": "montage/partition.json",
+      "references": "references/choix.json"
+    }
+  ]
+}

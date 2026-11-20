@@ -1,0 +1,40 @@
+{
+  "template_id": "COMMERCE-T5",
+  "titre": "Un client raconte",
+  "duree_s": 30,
+  "scenes": [
+    {
+      "id": "S1",
+      "titre": "DÉCOUVRE LE PRODUIT",
+      "debut_s": 0,
+      "fin_s": 6
+    },
+    {
+      "id": "S2",
+      "titre": "MONTRE CE QUE LE CLIENT A AIMÉ",
+      "debut_s": 6,
+      "fin_s": 14
+    },
+    {
+      "id": "S3",
+      "titre": "MONTRE LE PRODUIT EN ACTION",
+      "debut_s": 14,
+      "fin_s": 21
+    },
+    {
+      "id": "S4",
+      "titre": "INVITE LES AUTRES CLIENTS",
+      "debut_s": 21,
+      "fin_s": 30
+    }
+  ],
+  "liaison_champs": {
+    "nom": "Nom de la boutique",
+    "produit": "Nom du produit ou service",
+    "avis_client": "Témoignage affiché dans la vidéo",
+    "client": "Prénom ou « Un client », selon le choix",
+    "quartier": "Quartier ou adresse",
+    "whatsapp": "Numéro de contact"
+  },
+  "transitions_validees": null
+}
