@@ -7,25 +7,33 @@
       "id": "S1",
       "titre": "DÉCOUVRE LE PRODUIT",
       "debut_s": 0,
-      "fin_s": 6
+      "fin_s": 6,
+      "debut": 0,
+      "fin": 180
     },
     {
       "id": "S2",
       "titre": "MONTRE CE QUE LE CLIENT A AIMÉ",
       "debut_s": 6,
-      "fin_s": 14
+      "fin_s": 14,
+      "debut": 180,
+      "fin": 420
     },
     {
       "id": "S3",
       "titre": "MONTRE LE PRODUIT EN ACTION",
       "debut_s": 14,
-      "fin_s": 21
+      "fin_s": 21,
+      "debut": 420,
+      "fin": 630
     },
     {
       "id": "S4",
       "titre": "INVITE LES AUTRES CLIENTS",
       "debut_s": 21,
-      "fin_s": 30
+      "fin_s": 30,
+      "debut": 630,
+      "fin": 900
     }
   ],
   "liaison_champs": {
@@ -36,5 +44,150 @@
     "quartier": "Quartier ou adresse",
     "whatsapp": "Numéro de contact"
   },
-  "transitions_validees": null
+  "transitions_validees": [
+    "A",
+    "C"
+  ],
+  "version": "0.1.0",
+  "fps": 30,
+  "images": 900,
+  "dimensions": [
+    720,
+    1280
+  ],
+  "audio": false,
+  "effets": {
+    "coupes": [
+      {
+        "image": 0,
+        "zoom": 1,
+        "reference": "A",
+        "cadre": "entier"
+      },
+      {
+        "image": 60,
+        "zoom": 1.21,
+        "reference": "A",
+        "cadre": "detail"
+      },
+      {
+        "image": 117,
+        "zoom": 1.04,
+        "reference": "A",
+        "cadre": "geste"
+      },
+      {
+        "image": 180,
+        "zoom": 1.04,
+        "reference": "A",
+        "cadre": "nouvelle prise"
+      },
+      {
+        "image": 264,
+        "zoom": 1.22,
+        "reference": "A",
+        "cadre": "filament"
+      },
+      {
+        "image": 338,
+        "zoom": 1.07,
+        "reference": "A",
+        "cadre": "detail"
+      },
+      {
+        "image": 420,
+        "zoom": 1,
+        "reference": "A",
+        "cadre": "poignée"
+      },
+      {
+        "image": 513,
+        "zoom": 1.35,
+        "reference": "C",
+        "cadre": "geste serré"
+      },
+      {
+        "image": 630,
+        "zoom": 1,
+        "reference": "C",
+        "cadre": "révélation et tenue finale"
+      }
+    ]
+  },
+  "texte": {
+    "reference": "Babybee A · capture breakthrough innovation",
+    "famille": "Poppins",
+    "graisse": 600,
+    "fonte": "docs/assets/Poppins-SemiBold.ttf",
+    "sha256": "d3bf1bdaf0550e83da9ac0b1d1d9fe6db086835a83aa28578e609a394b9a0286",
+    "identification": "Équivalent visuel OFL ; famille originale non attestée",
+    "couleur": "#FFFFFF",
+    "largeur": 640,
+    "taille_px": 43,
+    "secondaire_px": 32,
+    "entree_images": 22,
+    "sortie_images": 21,
+    "animation": "opacité du groupe ; position fixe",
+    "fenetres": [
+      {
+        "debut": 0,
+        "fin": 90,
+        "y": 566,
+        "lignes": [
+          "{nom}"
+        ]
+      },
+      {
+        "debut": 90,
+        "fin": 180,
+        "y": 566,
+        "lignes": [
+          "{produit}"
+        ]
+      },
+      {
+        "debut": 180,
+        "fin": 420,
+        "y": 570,
+        "lignes": [
+          "« {avis_client} »",
+          "— {client}"
+        ]
+      },
+      {
+        "debut": 420,
+        "fin": 513,
+        "y": 560,
+        "lignes": [
+          "Le geste en détail"
+        ]
+      },
+      {
+        "debut": 513,
+        "fin": 630,
+        "y": 565,
+        "lignes": [
+          "{produit}"
+        ]
+      },
+      {
+        "debut": 630,
+        "fin": 722,
+        "y": 550,
+        "lignes": [
+          "{client} raconte"
+        ]
+      },
+      {
+        "debut": 722,
+        "fin": 900,
+        "y": 530,
+        "lignes": [
+          "{nom}",
+          "{quartier}",
+          "WhatsApp : {whatsapp}"
+        ]
+      }
+    ]
+  }
 }

@@ -1,5 +1,8 @@
 {
-  "choix": null,
+  "choix": [
+    "A",
+    "C"
+  ],
   "candidats": [
     {
       "lettre": "A",
@@ -16,5 +19,11 @@
       "source": "https://adsturbo.ai/explore/878",
       "lecture_directe": "https://int-picturebook.cdn.ipalfish.com/jp/buss/base/pub/63/63/efa6f9242de78328b4a5263bb91c.mp4"
     }
-  ]
+  ],
+  "typographie_source": "A",
+  "capture_proprietaire_sha256": "0536246442548d4149bccc64340a93dbe6bac810fe1fad0a33365ddae68feab7",
+  "observations": {
+    "A": "À 30 i/s : ouverture plein produit ; coupes observées à 2,00 s sur la roue, puis 2,73 s sur la main et 3,90 s sur le geste. Phrase centrée, opacité croissante des images 0 à ~22, stable, puis descendante vers 38–59. Pas de déplacement ni de surlignage mot à mot.",
+    "C": "Coupe franche à l’image 93 (3,10 s) : mains sur le vêtement → vue élargie du résultat porté. Plan final tenu."
+  }
 }

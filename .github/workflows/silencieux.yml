@@ -1,0 +1,29 @@
+name: Un client raconte · rendu silencieux depuis le job navigateur
+on: workflow_dispatch
+permissions: {contents: read}
+jobs:
+  rendre:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Contrat JSON et quatre rushs réels vérifiés
+        run: |
+          command -v ffmpeg && command -v ffprobe || { sudo apt-get update -qq && sudo apt-get install -y ffmpeg; }
+          pip install numpy opencv-python-headless pillow
+          npm install --prefix "$RUNNER_TEMP/tools" --ignore-scripts --no-audit puppeteer-core@23.11.1
+          python qc/brief.py && python tools/site.py && git diff --exit-code docs/data.js
+          python render/demo/preparer.py
+      - name: Parcourir les 12 écrans et exporter les prises avec le job
+        run: NODE_PATH="$RUNNER_TEMP/tools/node_modules" node render/parcours.cjs
+      - name: Rendre le job, vérifier les champs et l’absence de piste audio
+        run: |
+          python render/film.py --job work/job --out livraison --demo
+          python qc/film.py
+      - uses: actions/upload-artifact@v4
+        with: {name: T5-silencieux-01, path: livraison/, if-no-files-found: error}

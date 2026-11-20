@@ -1,0 +1,36 @@
+{
+  "titre": "LED Noodle Lantern",
+  "auteurs": "Ruiz Brothers / Adafruit Industries",
+  "video": "https://www.youtube.com/watch?v=9Mak8Uz3F8c",
+  "licence_affichee_sur_la_video": "Creative Commons Attribution license (reuse allowed)",
+  "source": "https://adafruit-podcasts.s3.amazonaws.com/media/9Mak8Uz3F8c_1080.mp4",
+  "sha256": "579f93c2609b4807103a7591dfa3124d52d47f3b81b98915bab06b77504230dc",
+  "guide": "https://learn.adafruit.com/led-noodle-lantern/overview",
+  "usage": "Démonstration fictive, avis et boutique illustratifs. Images recadrées, ralenties, remontées et titrées ; aucun son source.",
+  "plans": [
+    {
+      "scene": "S1",
+      "debut": 39.18,
+      "longueur": 2.55,
+      "centre": 0.535
+    },
+    {
+      "scene": "S2",
+      "debut": 1.4,
+      "longueur": 5.1,
+      "centre": 0.51
+    },
+    {
+      "scene": "S3",
+      "debut": 42.12,
+      "longueur": 6.95,
+      "centre": 0.51
+    },
+    {
+      "scene": "S4",
+      "debut": 133.46,
+      "longueur": 3.7,
+      "centre": 0.5
+    }
+  ]
+}
